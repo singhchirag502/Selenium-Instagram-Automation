@@ -113,3 +113,56 @@ def option2():
             driver.find_element_by_xpath('/html/body/div[4]/div[1]/div/div/a[2]').click()
             time.sleep(2)
         time.sleep(6)
+def option3():
+    username=input("Enter your username: ")
+    password=input("Enter your Password: ")
+    target_username=input("Enter the target username: ")
+    message1=input("Enter the  message: ")
+    number_of_times=int(input("Enter the number of times for the message to be sent: "))
+    driver=webdriver.Chrome(chromedriver)
+    driver.get("https://www.instagram.com/accounts/login/?hl=en")
+    time.sleep(2)
+    driver.find_element_by_xpath("//*[@id='react-root']/section/main/div/article/div/div[1]/div/form/div[2]/div/label/input").send_keys(username)
+    driver.find_element_by_xpath('//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[3]/div/label/input').send_keys(password)
+    driver.find_element_by_xpath('//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[4]/button/div').click()
+    time.sleep(4)
+    driver.find_element_by_xpath('//*[@id="react-root"]/section/main/div/div/div/div/button').click()   #Not Now
+    time.sleep(3)
+    driver.find_element_by_xpath('/html/body/div[4]/div/div/div/div[3]/button[2]').click()    #Not Now
+    time.sleep(4)
+    driver.find_element_by_xpath('//*[@id="react-root"]/section/nav/div[2]/div/div/div[2]/input').send_keys(target_username)      # inputing the username
+    time.sleep(5)
+    keyboard.press(Key.enter)
+    keyboard.release(Key.enter)
+    keyboard.press(Key.enter)
+    keyboard.release(Key.enter)
+    time.sleep(8)
+    driver.find_element_by_xpath('//*[@id="react-root"]/section/main/div/header/section/div[1]/div[1]/div/button').click()
+    time.sleep(2)
+    for i in range(0,number_of_times):
+        keyboard.type(message1)
+        keyboard.press(Key.enter)
+        keyboard.release(Key.enter)
+    
+
+
+print("WELCOME TESTER !")
+print("This is a Menu-Driven program for Instagram Automation Bot\n")
+print("Choose one option: (1 or 2) ")
+print("0. Exit ")
+print("1. Like and Comment on a post of a particular Hashtag .")
+print("2. Like and Comment on a post of a particular username .")
+print("3. Direct message to someone in loop .(This is a BETA mode)\n")
+option=int(input("Enter your option: "))
+print()
+if option==0:
+    print("You have exited the program")
+    print("Thank You !")
+elif option==1:
+    option1()
+elif option==2:
+    option2()
+elif option==3:
+    option3()
+else:
+    print("Invalid Input")
